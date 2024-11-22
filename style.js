@@ -1,8 +1,8 @@
-function sentMail() {
+function sentMail(event) {
+    event.preventDefault();
 
-    if (document.getElementById("email_name").value.length > 0 &&
-        document.getElementById("email_address").value.length > 0 &&
-        document.getElementById("email_message").value.length > 0
+    if (document.getElementById("email_name").value.trim().length > 0 &&
+        document.getElementById("email_message").value.trim().length > 0
     ) {
         var params = {
             name: document.getElementById("email_name").value,
@@ -26,13 +26,10 @@ function sentMail() {
             )
             .catch((err) => console.log(err))
 
-    } else if (document.getElementById("email_name").value.length == 0) {
+    } else if (document.getElementById("email_name").value.trim().length == 0) {
         alert("Name cant be empty");
     }
-    else if (document.getElementById("email_address").value.length == 0) {
-        alert("Email cant be empty");
-    }
-    else if (document.getElementById("email_message").value.length == 0) {
+    else if (document.getElementById("email_message").value.trim().length == 0) {
         alert("Message cant be empty");
     }
 }
